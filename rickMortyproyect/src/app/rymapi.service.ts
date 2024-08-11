@@ -17,10 +17,12 @@ export class rymDataservice {
 /*
 consume la api y devuelve un observable a la respuesta
 */
-  public getAll(): Observable <CharacterData[]>{
+  public getAll(): Observable <any>{
    
     //como el fetch en js
- return  this.http.get<CharacterData[]>(URL);
- console.log(CharacterData);
+ return  this.http.get<any>(URL);
+ 
   }
 }
+
+

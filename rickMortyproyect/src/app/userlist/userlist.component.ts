@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { rymDataservice } from '../rymapi.service';
 
 @Component({
@@ -6,21 +6,26 @@ import { rymDataservice } from '../rymapi.service';
   templateUrl: './userlist.component.html',
   styleUrl: './userlist.component.scss'
 })
-export class UserlistComponent {
+export class UserlistComponent implements OnInit {
  
-  users:  CharacterData[] = [];
+  users:  any [] = [];
 
   
   
-  constructor( 
-    private rymDataservice : rymDataservice ){ //inyecciones de los servicios
+  constructor(  private rymappiservice :rymDataservice ){ //inyecciones de los servicios
       
 
 }
 ngOnInit(): void {
-  
-  this.rymDataservice.getAll().subscribe(users => this.users = users);
-  console.log(this.users);
+  this.llenarData();
+}
 
+llenarData(){
+
+
+  this.rymappiservice.getAll().subscribe(users => { this.users = users
+
+    console.log(this.users);
+ } );
 }
 }

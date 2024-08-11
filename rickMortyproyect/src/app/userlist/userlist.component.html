@@ -14,13 +14,22 @@
 
 
 
-  <div class="card" style="width: 18rem;"  *ngFor="let char of users" >
-    <img [src]="char.image" class="card-img-top" alt="" slot="start">
+  <div class="card" style="width: 18rem;"   >
+    <img [src]="" class="card-img-top" alt="" slot="start">
     <div class="card-body">
-      <h5 class="card-title">{{char.name}}</h5>
+      <h5 class="card-title"></h5>
       <p class="card-text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta dignissimos odio consequuntur co</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
     
   </div>
 
+
+  <div>
+
+    <ul>
+      <li *ngFor="let item of users">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
