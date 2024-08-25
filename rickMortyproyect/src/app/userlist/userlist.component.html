@@ -6,30 +6,30 @@
             <button type="button" class="btn btn-outline-secondary" [routerLink]="['/home']" ><-</button>
      
           </a>
-          <p>Users</p>
+          <h3 class="nav-justified">Characters</h3>
     </div>
   </nav>
 
 
+<div class="container-fluid">
+  <div class="row">
 
-
-
-  <div class="card" style="width: 18rem;"   >
-    <img [src]="" class="card-img-top" alt="" slot="start">
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta dignissimos odio consequuntur co</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+    <div class="col-md-4 col-sm-6 mb-4"  *ngFor="let character of users"  >
     
+      
+      <div class="card" style="width: 18rem;"     >
+        <img [src]="character.image" class="card-img-top" alt="" slot="start"  >
+        <div class="card-body">
+          <h2 class="card-title"> {{character.name}} </h2>
+          <h6 class="card-text">{{character.species}}</h6>
+          <h6 class="card-text">{{character.status}} </h6>
+          <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+        
+      </div>
   </div>
+</div>
+  
+</div>
 
-
-  <div>
-
-    <ul>
-      <li *ngFor="let item of users">
-        {{ item.name }}
-      </li>
-    </ul>
-  </div>
+  

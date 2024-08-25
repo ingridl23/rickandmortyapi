@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { userlist } from './userlist/userlist';
+//import { userlist } from './userlist/userlist';
 
 
 const URL= 'https://rickandmortyapi.com/api/character';
