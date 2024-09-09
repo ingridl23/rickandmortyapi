@@ -1,0 +1,51 @@
+<nav class="navbar bg-body-tertiary" data-bs-theme="dark"  >
+
+
+ 
+    <div class="container"    >
+        <a class="navbar-brand"    >
+            
+            <button type="button" class="btn btn-outline-secondary" [routerLink]="['/users']" ><-</button>
+     
+          </a>
+          <h3 class="nav-justified">Personal Profile</h3>
+    </div>
+  
+  </nav>
+
+
+  <body >
+
+
+
+  <div class="container-fluid">
+
+    <div class="row">
+  
+      <div class="col-md-4 col-sm-6 mb-4"  >
+      
+     
+        <div class="card" style="width: 18rem;"     >
+          <img [src]="character.image" class="card-img-top" alt="" slot="start"  >
+          <div class="card-body">
+            <h2 class="card-title">  {{character.name}} </h2>
+            <h6 class="card-text"> Specie :{{character.species}}</h6>
+           
+            <h6 class="card-text"> Status :{{character.status}} </h6>
+         
+            <p class="card-subtitle"> Gender :  {{character.gender}}</p>
+        
+            <h6>The created date : {{character.created}}</h6>
+         
+          </div>
+          
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body>

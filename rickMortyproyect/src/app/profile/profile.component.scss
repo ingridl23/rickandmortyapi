@@ -3,21 +3,19 @@ body{
     background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
     background-position: center; /* Centra la imagen */
    // background-repeat: no-repeat; /* Evita que la imagen se repita */
+   width: 100%;
+   height: auto;
    
   }
 
-#glass-content{
 
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    width: 100%;
-    min-height: 100vh;
- background: rgba(255, 255, 255, 0.02);
-}
+
+
+
 .nav-justified{
     color: aliceblue;
     text-transform: capitalize;
    
 }
+
+

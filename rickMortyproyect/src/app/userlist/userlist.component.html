@@ -1,5 +1,5 @@
 
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-body-tertiary" data-bs-theme="dark" >
     <div class="container">
         <a class="navbar-brand" href="#">
             
@@ -10,20 +10,22 @@
     </div>
   </nav>
 
+<body>
 
-<div class="container-fluid">
+
+<div class="container-fluid"  id="glass-content">
   <div class="row">
 
     <div class="col-md-4 col-sm-6 mb-4"  *ngFor="let character of users"  >
     
-      
+   
       <div class="card" style="width: 18rem;"     >
         <img [src]="character.image" class="card-img-top" alt="" slot="start"  >
         <div class="card-body">
           <h2 class="card-title"> {{character.name}} </h2>
-          <h6 class="card-text">{{character.species}}</h6>
-          <h6 class="card-text">{{character.status}} </h6>
-          <a href="#" class="btn btn-primary">Read More</a>
+       
+          <button class="btn btn-primary" [routerLink]="['/profile', character.id]">Read More</button>
+
         </div>
         
       </div>
@@ -32,4 +34,10 @@
   
 </div>
 
-  
+<div class="pagination-controls">
+  <button class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{currentPage}}</span>
+  <button class="btn btn-secondary" (click)="nextPage()">Next</button>
+</div>
+
+</body>

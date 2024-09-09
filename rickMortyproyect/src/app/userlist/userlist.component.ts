@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { rymDataservice } from '../rymapi.service';
+import { CharacterpageService } from '../characterpage.service';
 
 @Component({
   selector: 'app-userlist',
@@ -10,14 +11,17 @@ export class UserlistComponent implements OnInit {
  
   users:  any [] = [];
 
+  currentPage: number = 1;
+  characterService: any;
+  characters: any ;
   
-  
-  constructor(  private rymappiservice :rymDataservice ){ //inyecciones de los servicios
+  constructor(  private rymappiservice :rymDataservice, private characterpageService: CharacterpageService){ //inyecciones de los servicios
       
 
 }
 ngOnInit(): void {
   this.llenarData();
+  this.loadCharacters();
 }
 
 /*
@@ -41,5 +45,26 @@ llenarData() {
   );
 }
 
+
+ loadCharacters(page: number = 1): void {
+    this.characterpageService.getCharacters(page).subscribe((response => {
+      this.users = response.info;
+      this.currentPage = page;
+    }));
+
 }
 
+nextPage(): void {
+  this.loadCharacters(this.currentPage + 1);
+}
+
+previousPage(): void {
+  if (this.currentPage > 1) {
+    this.loadCharacters(this.currentPage - 1);
+  }
+
+}
+
+
+
+}

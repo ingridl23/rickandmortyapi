@@ -6,19 +6,22 @@ import { AppComponent } from './app.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CharacterpageService } from './characterpage.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserlistComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CharacterpageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
