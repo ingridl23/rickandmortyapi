@@ -3,9 +3,9 @@
 
  
     <div class="container"    >
-        <a class="navbar-brand"    >
+        <a class="navbar-brand"      [routerLink]="['/users']"   >
             
-            <button type="button" class="btn btn-outline-secondary" [routerLink]="['/users']" ><-</button>
+        <img  width="50px" src="assets/images/flecha-izquierda.png">
      
           </a>
           <h3 class="nav-justified">Personal Profile</h3>
@@ -22,7 +22,7 @@
 
     <div class="row">
   
-      <div class="col-md-4 col-sm-6 mb-4"  >
+      <div class="col-md-4 col-sm-6 mb-4"  class="divcard" >
       
      
         <div class="card" style="width: 18rem;"     >
@@ -34,6 +34,8 @@
             <h6 class="card-text"> Status :{{character.status}} </h6>
          
             <p class="card-subtitle"> Gender :  {{character.gender}}</p>
+            <p  class="card-subtitle"> Seen for the first time: {{character.origin.name}} </p>
+            <p  class="card-subtitle"> Seen for the last time: {{character.location.name}} </p>
         
             <h6>The created date : {{character.created}}</h6>
          

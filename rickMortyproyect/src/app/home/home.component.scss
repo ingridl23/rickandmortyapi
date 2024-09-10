@@ -82,32 +82,11 @@ text-align: center;
 
     
 } 
-/*
+
+.anav{
+  text-decoration: none;
+}
 
 
 
-
-    .menu-toggle {
-        display: none;
-      }
-      
-      .menu-icon {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-      }
-      
-      @media (max-width: 768px) {
-        .menu-list {
-          display: none;
-        }
-      
-        .menu-toggle:checked ~ .menu-list {
-          display: block;
-        }
-      
-        .menu-icon {
-          display: block;
-        }
-      }
-      */
+   

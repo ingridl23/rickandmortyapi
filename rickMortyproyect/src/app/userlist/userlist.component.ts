@@ -11,17 +11,30 @@ export class UserlistComponent implements OnInit {
  
   users:  any [] = [];
 
-  currentPage: number = 1;
+ 
   characterService: any;
   characters: any ;
+
+  pages: number[] = [];
+
+  items: any[] = [];
+  currentPage = 1;
+  
+  
+  totalItems!: number;
+  itemsPerPage = 20; // La API de Rick and Morty devuelve 20 personajes por página.
+Math: any;
   
   constructor(  private rymappiservice :rymDataservice, private characterpageService: CharacterpageService){ //inyecciones de los servicios
       
 
 }
 ngOnInit(): void {
+
+  this.pages = Array.from({ length: Math.ceil(this.totalItems / this.itemsPerPage) }, (_, i) => i + 1);
+
+  this.loadItems(this.currentPage);
   this.llenarData();
-  this.loadCharacters();
 }
 
 /*
@@ -45,25 +58,21 @@ llenarData() {
   );
 }
 
+loadItems(page: number): void {
+  this.characterpageService.getItems(page).subscribe(data => {
+    this.characters = data.results; // 'results' es la clave en la que se encuentran los personajes en la API de Rick and Morty
+    this.totalItems = data.info.count; // 'count' es el total de personajes en la API
+    this.currentPage = page;
+  });
 
- loadCharacters(page: number = 1): void {
-    this.characterpageService.getCharacters(page).subscribe((response => {
-      this.users = response.info;
-      this.currentPage = page;
-    }));
-
-}
-
-nextPage(): void {
-  this.loadCharacters(this.currentPage + 1);
-}
-
-previousPage(): void {
-  if (this.currentPage > 1) {
-    this.loadCharacters(this.currentPage - 1);
-  }
 
 }
+ 
+
+onPageChange(page: number): void {
+  this.loadItems(page);
+}
+
 
 
 

@@ -1,11 +1,11 @@
 
 <nav class="navbar bg-body-tertiary" data-bs-theme="dark" >
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand"    [routerLink]="['/home']" > <img width=50px src="assets/images/flecha-izquierda.png"  >    </a>
             
-            <button type="button" class="btn btn-outline-secondary" [routerLink]="['/home']" ><-</button>
+    
      
-          </a>
+        
           <h3 class="nav-justified">Characters</h3>
     </div>
   </nav>
@@ -34,10 +34,26 @@
   
 </div>
 
-<div class="pagination-controls">
-  <button class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-  <span>Page {{currentPage}}</span>
-  <button class="btn btn-secondary" (click)="nextPage()">Next</button>
-</div>
+<!--
+
+
+<section>
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages">
+        <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+     </li>
+     
+      <li class="page-item" [class.disabled]="currentPage === Math.ceil(totalItems / itemsPerPage)">
+        <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+-->
 
 </body>
