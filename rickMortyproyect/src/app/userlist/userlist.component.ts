@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { rymDataservice } from '../rymapi.service';
 import { CharacterpageService } from '../characterpage.service';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-userlist',
@@ -8,7 +10,7 @@ import { CharacterpageService } from '../characterpage.service';
   styleUrl: './userlist.component.scss'
 })
 export class UserlistComponent implements OnInit {
- 
+
   users:  any [] = [];
 
  
@@ -25,7 +27,7 @@ export class UserlistComponent implements OnInit {
   itemsPerPage = 20; // La API de Rick and Morty devuelve 20 personajes por página.
 Math: any;
   
-  constructor(  private rymappiservice :rymDataservice, private characterpageService: CharacterpageService){ //inyecciones de los servicios
+  constructor(  private rymappiservice :rymDataservice, private characterpageService: CharacterpageService, private cdr: ChangeDetectorRef ){ //inyecciones de los servicios
       
 
 }
@@ -33,8 +35,8 @@ ngOnInit(): void {
 
   this.pages = Array.from({ length: Math.ceil(this.totalItems / this.itemsPerPage) }, (_, i) => i + 1);
 
-  this.loadItems(this.currentPage);
   this.llenarData();
+  this.loadItems(this.currentPage);
 }
 
 /*
@@ -60,9 +62,16 @@ llenarData() {
 
 loadItems(page: number): void {
   this.characterpageService.getItems(page).subscribe(data => {
-    this.characters = data.results; // 'results' es la clave en la que se encuentran los personajes en la API de Rick and Morty
-    this.totalItems = data.info.count; // 'count' es el total de personajes en la API
-    this.currentPage = page;
+    console.log('Datos recibidos:', data); // Verifica que los datos sean los esperados
+    this.characters = data.results; // Actualiza los personajes
+    this.totalItems = data.info.count; // Actualiza el número total de personajes
+    this.currentPage = page; // Actualiza la página actual
+    this.pages = Array.from({ length: Math.ceil(this.totalItems / this.itemsPerPage) }, (_, i) => i + 1); // Actualiza las páginas disponibles
+ 
+    // Forzar la detección de cambios
+    this.cdr.detectChanges();
+  }, error => {
+    console.error('Error al cargar personajes:', error); // Maneja cualquier error
   });
 
 
@@ -70,7 +79,15 @@ loadItems(page: number): void {
  
 
 onPageChange(page: number): void {
-  this.loadItems(page);
+
+   // Añadimos un chequeo para ver si se está llamando correctamente
+   console.log('Página solicitada:', page); 
+
+   if (page > 0 && page <= this.pages.length) {
+     this.currentPage = page;  // Actualiza la página actual
+     this.loadItems(page);      // Carga los nuevos personajes para la página seleccionada
+   }
+ // this.loadItems(page);
 }
 
 
