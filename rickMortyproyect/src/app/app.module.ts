@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CharacterpageService } from './characterpage.service';
+import { EpisodiesComponent } from './episodies/episodies.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserlistComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    EpisodiesComponent
   ],
   imports: [
     BrowserModule,
